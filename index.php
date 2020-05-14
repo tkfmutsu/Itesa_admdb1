@@ -9,12 +9,13 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8">
-	<title>Interfaz DB v 0.811</title>
+	<title>Interfaz DB v 0.821</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/custom.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/font-awesome.css">
 </head>
 <body style="background-color: white" onload="startTime()">
+<img src="itesalogo.png" width="160" height="70">
 <?php
 
 	if(isset($_SESSION['descarga'])){
