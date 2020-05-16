@@ -9,7 +9,7 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8">
-	<title>Interfaz DB v 0.8221</title>
+	<title>Interfaz DB v 0.937</title>
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/custom.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/font-awesome.css">
@@ -42,12 +42,23 @@
 	<div id='hora'></div>
 	<h1 class="page-header text-center">Administrador de base de datos</h1>
 
+<!-- ZONA PARA PRUEBAS DE PHP AQUI
+/
+/
+/
+<?php
+
+ ?>
+/
+/
+-->
 
 	<div class="row">
 		<form action="backup.php" method="post">
 			<input type="text" name="nombreback" value="" style="height: 20px; width: 80px;">
 			<button class="btn btn-success" type="submit" name="button"><span class="fa fa-copy"></span>&nbsp;&nbsp;&nbsp; Hacer respaldo</button>
 		</form>
+		<?php if($_SESSION['tipo']=="admin"){?>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<form action="restore.php" method="post">
 			<input type="text" name="nombrerestore" value="" style="height: 20px; width: 80px;">
@@ -55,6 +66,7 @@
 		</form>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<h5 style="padding-top: 15px;">El montar respaldo es con el nombre que se uso en "Hacer respaldo"</h1>
+		<?php } ?>
 	</div>
 	<div class="row">
 		<div class="col-sm-12">

@@ -1,5 +1,5 @@
 
-<div id="myModal" class="modal" >
+<div id="myModal" class="modal">
 <center> <div class="modal-content" style="width: 600px">
         <table class="table table-bordered table-striped" style="margin-top:20px; width: 500px; background-color: white;">
           <thead>
@@ -40,7 +40,7 @@
 
 <div class="modal fade" id="bit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="width: 600px;">
+        <div class="modal-content" style="width: 670px; right:10%;">
             <div class="modal-header">
             	<center><h4 class="modal-title" id="myModalLabel">Bitacora</h4></center>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -48,10 +48,18 @@
 		        </button>
 
             </div>
-      <form id="bitacora_imp" method="POST" action="delete_bit.php">
+      <form id="bitacora_imp" method="POST" action="#">
       <div class="modal-body">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <p>Solo utilizar uno</p>
+      <div class="row">
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" class="col-xm-4" id="myInput" onkeyup="myFunction()" placeholder="Buscar por usuario.." title="Type in a name">&nbsp;&nbsp;
+        <input type="text" class="col-xm-4" id="myInput2" onkeyup="myFunction2()" placeholder="Buscar por tablas.." title="Type in a name">&nbsp;&nbsp;
+        <input type="text" class="col-xm-4" id="myInput3" onkeyup="myFunction3()" placeholder="Buscar por acciones.." title="Type in a name">&nbsp;&nbsp;
+      </div>
         <div class="container-fluid" id="cont">
-          <table id="contenido" class="table table-bordered table-striped" style="margin-top:20px; width: 500px;">
+          <table id="contenido" class="table table-bordered table-striped" style="margin-top:20px; width: 620px;">
             <thead>
               <th>Usuario</th>
               <th>Tabla utilizada</th>
@@ -60,13 +68,14 @@
             </thead>
             <tbody>
               <?php
-                // incluye la conexión
                 include_once('connection.php');
 
                 $database = new Connection();
                   $db = $database->open();
                 try{
                     $sql = 'SELECT * FROM bitacora';
+
+
                     foreach ($db->query($sql) as $row) {
                       ?>
                       <tr>
@@ -82,10 +91,7 @@
                 catch(PDOException $e){
                   echo "There is some problem in connection: " . $e->getMessage();
                 }
-
-                //cerrar conexión
                 $database->close();
-
               ?>
             </tbody>
           </table>
@@ -101,12 +107,73 @@
                         ventanaImpresion.document.close();
                         ventanaImpresion.print();
                         ventanaImpresion.close();
-                        document.getElementById("bitacora_imp").submit();
+                        //document.getElementById("bitacora_imp").submit();
                     }
                 </script>
             </div>
-            <h4>ALERTA: se limpiara la bitacora al momento de dar click en "Guardar PDF"</h4>
       		</form>
         </div>
     </div>
+  </div>
 </div>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("cont");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+<script>
+function myFunction2() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput2");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("cont");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+<script>
+function myFunction3() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput3");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("cont");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
