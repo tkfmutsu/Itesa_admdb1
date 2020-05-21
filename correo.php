@@ -2,8 +2,8 @@
 require_once "mail/class.phpmailer.php";
 
 session_start();
-define("FROM_ADDRESS", "16030851@itesa.edu.mx");
-define("PASSWORD", "koretzo0160");
+define("FROM_ADDRESS", "");
+define("PASSWORD", "");
 define("FROM_NAME", "ITESA-ArturoDB");
 $now = date_create('now')->format('Y-m-d');
 $sendTo = "tkfmutsurini@gmail.com";
